@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Registrar Usuario</h2>
+    <form method="POST">
+        <input class="form-control mb-2" name="nombre" placeholder="Nombre completo" required>
+        <input class="form-control mb-2" name="telefono" placeholder="Teléfono">
+        <input class="form-control mb-2" name="direccion" placeholder="Dirección">
+        <input class ="form-control mb-2" name ="foto_perfil" type="file" accept="image/*">
+        <label>Foto de perfil</label>
+
+        <h1>                    </h1>
+        <button class="btn btn-success" type="submit">Registrar</button>
+        
+
+
+
+    </form>
+{% endblock %}

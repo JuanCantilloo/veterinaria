@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Registrar Mascota</h2>
+    <form method="POST" enctype="multipart/form-data">
+
+        <input class="form-control mb-2" name="nombre" placeholder="Nombre de la mascota" required>
+         <input class="form-control mb-2" name="tipo" placeholder="Tipo de mascota (ej. perro, gato)" required>
+        <input class="form-control mb-2" name="raza" placeholder="Raza">
+       
+        <label>Fecha de nacimiento</label>
+        <input class="form-control mb-2" type="date" name="fecha_nacimiento" required>
+        <input class="form-control mb-2" name="peso" placeholder="Peso (kg)" type="number" step="0.01">
+        <input class="form-control mb-2" name="color" placeholder="Color">
+        <label>Fecha de ingreso</label>
+        <input class="form-control mb-2" type="date" name="fecha_ingreso" required>
+
+        <input class="form-control mb-2" name="foto" type="file" accept="image/*">
+        <label>Foto de la mascota</label>
+
+        <h1></h1>
+        <label>Descripción</label>
+        <label>Propietario</label>
+        <select class="form-control mb-3" name="usuario_id" required>
+            <option value="">Seleccione un propietario</option>
+            {% for usuario in usuarios %}
+                <option value="{{ usuario.id }}">{{ usuario.nombre }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn btn-success" type="submit">Registrar Mascota</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,15 @@
+body {
+  background-color: #2a83db;
+  background-image: url('../img/logo.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.display-4 {
+  font-weight: 600;
+}

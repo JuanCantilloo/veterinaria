@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Mascotas Adoptadas</h2>
+    {% if mascotas %}
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Raza</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Peso</th>
+                    <th>Color</th>
+                    <th>Fecha Adopción</th>
+                    <th>Propietario</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mascota in mascotas %}
+                    <tr>
+                        <td>{{ mascota.id }}</td>
+                        <td>{{ mascota.nombre }}</td>
+                        <td>{{ mascota.raza }}</td>
+                        <td>{{ mascota.fecha_nacimiento }}</td>
+                        <td>{{ mascota.peso }}</td>
+                        <td>{{ mascota.color }}</td>
+                        <td>{{ mascota.fecha_adopcion }}</td>
+                        <td>{{ mascota.propietario }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay mascotas adoptadas registradas.</p>
+    {% endif %}
+</div>
+{% endblock %}

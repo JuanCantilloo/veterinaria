@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Editar Mascota</h2>
+<form method="POST">
+    <input class="form-control mb-2" name="nombre" value="{{ mascota.nombre }}" required>
+    <input class="form-control mb-2" name="raza" value="{{ mascota.raza }}">
+    <input class="form-control mb-2" type="date" name="fecha_nacimiento" value="{{ mascota.fecha_nacimiento|safe }}">
+    <input class="form-control mb-2" type="number" name="peso" value="{{ mascota.peso }}" step="0.01">
+    <input class="form-control mb-2" name="color" value="{{ mascota.color }}">
+    <input class="form-control mb-2" type="date" name="fecha_ingreso" value="{{ mascota.fecha_ingreso|safe }}">
+    
+    <select class="form-control mb-2" name="usuario_id">
+        {% for u in usuarios %}
+            <option value="{{ u.id }}" {% if u.id == mascota.usuario_id %}selected{% endif %}>{{ u.nombre }}</option>
+        {% endfor %}
+    </select>
+    <button class="btn btn-primary" type="submit">Actualizar Mascota</button>
+</form>
+{% endblock %}

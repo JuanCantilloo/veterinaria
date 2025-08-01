@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Listado de Mascotas</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>tipo</th>
+                <th>Raza</th>
+                <th>Fecha Nac.</th>
+                <th>Peso</th>
+                <th>Color</th>
+                <th>Ingreso</th>
+                <th>Propietario</th>
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in mascotas %}
+            <tr>
+                <td>{{ m.id }}</td>
+                <td>{{ m.nombre }}</td>
+                <th>{{m.tipo}}</th>
+                <td>{{ m.raza }}</td>
+                <td>{{ m.fecha_nacimiento }}</td>
+                <td>{{ m.peso }}</td>
+                <td>{{ m.color }}</td>
+                <td>{{ m.fecha_ingreso }}</td>
+                <td>{{ m.propietario }}</td>
+                <td>
+                         <a href="{{ url_for('editar_mascota', id=m.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                         <a href="{{ url_for('eliminar_mascota', id=m.id) }}" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar esta mascota?')">Eliminar</a>
+                         
+
+                         <form action="{{ url_for('adoptar_mascota', id=m.id) }}" method="post" style="display:inline;">
+                        <button class="btn btn-success btn-sm" onclick="return confirm('¿Adoptar y retirar esta mascota?')">Adoptar</button>
+                        <a href="{{ url_for('info_mascota', id=m.id) }}" class="btn btn-info btn-sm">Info</a>
+                         </form>
+                </td>
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

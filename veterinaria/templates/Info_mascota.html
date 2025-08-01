@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Información de la Mascota</h2>
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <!-- Columna izquierda: texto -->
+            <div class="col-md-8">
+                <h5 class="card-title">{{ mascota.nombre }}</h5>
+                <p class="card-text"><strong>Tipo:</strong> {{ mascota.tipo }}</p>
+                <p class="card-text"><strong>Raza:</strong> {{ mascota.raza }}</p>
+                <p class="card-text"><strong>Fecha de Nacimiento:</strong> {{ mascota.fecha_nacimiento }}</p>
+                <p class="card-text"><strong>Peso:</strong> {{ mascota.peso }} kg</p>
+                <p class="card-text"><strong>Color:</strong> {{ mascota.color }}</p>
+                <p class="card-text"><strong>Fecha de Ingreso:</strong> {{ mascota.fecha_ingreso }}</p>
+                <p class="card-text"><strong>Propietario:</strong> {{ mascota.propietario }}</p>
+                <p class="card-text"><strong>Descripción:</strong> {{ mascota.descripcion }}</p>
+            </div>
+
+            <!-- Columna derecha: imagen -->
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                {% if mascota.foto %}
+                <img src="{{ url_for('static', filename='img/' + mascota.foto) }}" alt="Foto de la mascota" class="img-fluid" style="max-height: 250px;">
+
+
+                {% else %}
+                    <p>No hay foto disponible.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a href="{{ url_for('editar_mascota', id=mascota.id) }}" class="btn btn-warning">Editar</a>
+        <a href="{{ url_for('eliminar_mascota', id=mascota.id) }}" class="btn btn-danger" onclick="return confirm('¿Eliminar esta mascota?')">Eliminar</a>
+        <a href="{{ url_for('listar_mascotas') }}" class="btn btn-secondary">Volver al Listado</a>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+
